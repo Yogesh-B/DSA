@@ -1,2 +1,3 @@
 # DSA
-DSA problems solve in localhost
+- Data Strcture and Algorithms problems solve in localhost
+- Maths concepts
