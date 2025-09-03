@@ -16,26 +16,27 @@
 
 #brute force method
 #input array and target x
-arr = [1,5,3,8,4,6,55,22,15,45]
-x = 100
-smallest_sub_len = 0
+# arr = [1,5,3,8,4,6,55,22,15,45]  #1 5 3 8 4 6 55 22 15 45
+arr = [int(x) for x in input("Enter array elements separated by space:").split()]
+# x = 100
+x = int(input("Enter target x:"))
 #main logic below
 arr_n = len(arr)
-for i in range(len(arr)):
-    # we need two indices... one goes left, one goes right from the current index
-    n = i
-    m = i
+smallest_sub_len = arr_n
+final_sum = None
+final_index = []
+for i in range(arr_n):
     tmp_sum = 0
-    tmp_arr = arr[n:m]
-    while(n>0 or m < arr_n-1):
-        if n>0:
-            n-=1
-            tmp_arr = arr[n:m+1]
-            print(tmp_arr)
-        if m<arr_n-1:
-            m+=1
-            tmp_arr = arr[n:m+1]
-            print(tmp_arr)
-        print(arr)
-        #WIP
+    for j in range(i,arr_n):
+        tmp_sum += arr[j]
+        if(tmp_sum > x and j-i+1 <= smallest_sub_len):
+            smallest_sub_len = j-i+1
+            final_sum = tmp_sum
+            final_index = [i,j]
+            print(arr[i:j+1], tmp_sum)
+if final_sum is not None:
+    print(f"final answer: {smallest_sub_len}, sum: {final_sum}, sub_array:{arr[final_index[0]:final_index[1]+1]}")
+else:
+    print("Not found")
 
+#o(n)?? sliding window?
