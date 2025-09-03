@@ -38,3 +38,5 @@ for i in range(len(arr)):
             print(tmp_arr)
         print(arr)
         #WIP
+
+#idea 1 sort array nlog => then there could be a possibility for better comolexity
